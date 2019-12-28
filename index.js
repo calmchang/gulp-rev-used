@@ -104,7 +104,7 @@ function revUsed(opts) {
             if (!file.isNull()) {
                 var src = file.contents.toString('utf8');
                 used.forEach((r)=>{
-                    if(src.indexOf(r)>=0){
+                    if(src.indexOf(r.file)>=0){
                         r.count++;
                     }
                 })
