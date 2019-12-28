@@ -1,0 +1,46 @@
+{
+  "name": "gulp-rev-used",
+  "version": "0.0.1",
+  "description": "用于检查gulp-rev生成的资源文件哪些没有被使用到.",
+  "license": "MIT",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/calmchang/gulp-rev-used"
+  },
+  "author": {
+    "name": "cx",
+    "email": "248224524@qq.com"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "keywords": [
+    "gulpplugin",
+    "gulp",
+    "rev",
+    "revision",
+    "version",
+    "versioning",
+    "static",
+    "asset",
+    "assets",
+    "collect",
+    "collector"
+  ],
+  "dependencies": {
+    "gulp-util": "^3.0.0",
+    "through2": ">=0.5.1",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {
+    "lodash.isequal": "^4.4.0",
+    "mocha": "*"
+  }
+}
