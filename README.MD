@@ -1,15 +1,20 @@
 
-`gulp-rev-used`是基于`gulp-rev`的一款插件，目的用于检查哪些资源文件是没有被使用到的，方便提示开发及时删除不必要的资源
+`gulp-rev-used`是基于`gulp-rev`的一款插件
 
+* 目的用于检查哪些资源文件是没有被使用到的，方便提示开发及时删除不必要的资源
 
 
 
 ```
+var gulp = require('gulp');
+var rev=require('gulp-rev');
+var revUsed=require('gulp-rev-used');
+
 function setFileHashVersion(cb){
   return gulp.src([`src/**/*.*`])
-    .pipe($.rev())
+    .pipe(rev())
     .pipe(gulp.dest(`temp/files`))
-    .pipe($.rev.manifest())
+    .pipe(rev.manifest())
     .pipe(gulp.dest(`temp`))
 }
 
@@ -19,10 +24,15 @@ function checkUsed(cb){
     `temp/rev-manifest.json`,
     `temp/files/**/*.*`,
   ])
-  .pipe($.revUsed({
+  .pipe(revUsed({
     remove:true,//指定是否需要删除没有被使用到的文件
     root:`${__dirname}/temp/files`,//资源文件的根目录
   }))
 }
 
+
+
 ```
+
+
+exports.checkUsed=gulp.series(setFileHashVersion,checkUsed);
