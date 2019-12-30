@@ -5,7 +5,7 @@
 
 
 
-```
+```javascript
 var gulp = require('gulp');
 var rev=require('gulp-rev');
 var revUsed=require('gulp-rev-used');
@@ -31,8 +31,7 @@ function checkUsed(cb){
 }
 
 
+exports.checkUsed=gulp.series(setFileHashVersion,checkUsed);
 
 ```
 
-
-exports.checkUsed=gulp.series(setFileHashVersion,checkUsed);
