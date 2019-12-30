@@ -1,6 +1,6 @@
 {
   "name": "gulp-rev-used",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "用于检查gulp-rev生成的资源文件哪些没有被使用到.",
   "license": "MIT",
   "repository": {
