@@ -4,6 +4,7 @@ var gutil        = require('gulp-util');
 var PluginError  = gutil.PluginError;
 var through      = require('through2');
 var path         = require('path');
+var fs=require('fs');
 
 var PLUGIN_NAME  = 'gulp-rev-used';
 
@@ -69,6 +70,8 @@ function _mapExtnames(filename, opts) {
 
 
 function revUsed(opts) {
+    var remove = opts&&opts.remove;
+    var assetsRoot= opts&&opts.root;
     opts = _.defaults((opts || {}), defaults);
 
     var manifest  = {};
@@ -98,7 +101,7 @@ function revUsed(opts) {
 
         var used=[]
         for (var key in manifest) {
-            used.push({file:key,count:0});
+            used.push({file:key,count:0,hashFile:manifest[key]});
         }
         mutables.forEach(function (file){
             if (!file.isNull()) {
@@ -110,12 +113,14 @@ function revUsed(opts) {
                 })
             }
         });
-        console.log("==============check used============")
+        console.log("============== no used assets ============")
         used.forEach((r)=>{
             if(r.count===0){
+                if(remove)fs.unlink(assetsRoot+'/'+r.hashFile,(err)=>{console.log(err)});
                 console.log(r.file);
             }
         })
+        console.log("============== no used assets end ============")
 
         cb();
     });
